@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" style="-fx-background-color: #131314;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.yoosha.core.Controller">
+   <children>
+      <Text fx:id="youWorkOrRest" fill="#fff3f3" layoutX="41.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Вы сегодня работали:" textAlignment="CENTER" wrappingWidth="225.791015625">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Button fx:id="work" layoutX="104.0" layoutY="142.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="91.0" style="-fx-background-color: #131314; -fx-border-color: fafafa; -fx-border-radius: 5;" text="Работать" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </Button>
+      <Text fx:id="mainStatistics" fill="WHITE" layoutX="131.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0h 0m" />
+      <Button fx:id="statistics" layoutX="13.0" layoutY="254.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="91.0" style="-fx-background-color: #131314; -fx-border-color: fafafa; -fx-border-radius: 5;" text="Статистика" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="settings" layoutX="195.0" layoutY="254.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="91.0" style="-fx-background-color: #131314; -fx-border-color: fafafa; -fx-border-radius: 5;" text="Настройки" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font>
+      </Button>
+      <Text fx:id="toNewSession" fill="WHITE" layoutX="10.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="До работы:" />
+      <Text fx:id="toNewSessionTime" fill="WHITE" layoutX="95.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 m" textAlignment="RIGHT" wrappingWidth="72.091796875" />
+   </children>
+</AnchorPane>
