@@ -55,14 +55,18 @@ public class Controller {
         } catch (Exception ex) {System.out.println(ex.getMessage());}
 
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event -> {
+
             if (workController.isWork) {
                 mainStatistics.setText(workController.workTimeFromCalculateAsString());
             } else {
                 try {
                     mainStatistics.setText(workController.restTimeFromCalculateAsString());
-                    toNewSessionTime.setText(workController.timeToEndSessionAsString());
                 } catch (NullPointerException ignored) { }
             }
+
+            try {
+                toNewSessionTime.setText(workController.timeToEndSessionAsString());
+            } catch (NullPointerException ignored) { }
         }));
         timeline.setCycleCount(Timeline.INDEFINITE); // Бесконечное повторение
 
@@ -82,8 +86,6 @@ public class Controller {
 
                 toNewSession.setText("До работы:");
             }
-
-            toNewSessionTime.setText(workController.timeToEndSessionAsString());
         });
     }
 }
