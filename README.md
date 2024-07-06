@@ -1,4 +1,4 @@
-# Time manager ver. 0.5-ALPHA
+# Time manager ver. 0.6-ALPHA
 
 ## Check list:
 
