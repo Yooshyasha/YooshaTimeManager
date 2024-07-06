@@ -9,6 +9,7 @@
 5. [ ] Make application settings change in UI
 6. [ ] Make statistics output in the corresponding button
 7. [ ] Create localization to en/ru
+8. [ ] Add an app blocker at runtime, make it shibbily customizable
 
 ##### off-topic
 ###### This is my first Java project to get to a lesser state, it didn't turn out well at some points, I can see that. If you want, you can create a pool request.
