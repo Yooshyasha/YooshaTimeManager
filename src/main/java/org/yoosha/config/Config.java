@@ -1,5 +1,7 @@
 package org.yoosha.config;
 
+import org.yoosha.localization.Localization;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -17,6 +19,7 @@ public class Config {
             setValue("maxWorkTime", "25");
             setValue("maxRestTime", "5");
             setValue("telegramBotToken", "");
+            setValue("language", new Localization().getLanguage());
         }
 
     }
@@ -35,7 +38,7 @@ public class Config {
 
         try {
             FileOutputStream out = new FileOutputStream(propertiesPath);
-            properties.store(out, "Standart settings");
+            properties.store(out, "Standart settings\nLanguages: org/yoosha/localization/Localization.Localizations");
         } catch (IOException ex) {System.out.println();}
     }
 

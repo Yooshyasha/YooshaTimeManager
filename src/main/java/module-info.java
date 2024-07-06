@@ -12,6 +12,8 @@ module org.yoosha.core {
     requires spring.beans;
     requires org.xerial.sqlitejdbc;
     requires spring.context;
+    requires spring.core;
+    requires java.json;
 
     opens org.yoosha.core to javafx.fxml;
     exports org.yoosha.core;

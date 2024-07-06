@@ -20,9 +20,12 @@ import org.yoosha.entities.SessionModel;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        stage.setTitle("yoosha tips!");
+        stage.setResizable(false);
+
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("window.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 300, 300);
-        stage.setTitle("yoosha tips!");
+
         stage.setScene(scene);
         stage.show();
     }

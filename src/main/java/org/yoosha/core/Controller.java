@@ -11,6 +11,8 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.yoosha.config.Config;
 import org.yoosha.controllers.WorkController;
+import org.yoosha.localization.Localization;
+import org.yoosha.localization.UIText;
 
 public class Controller {
 
@@ -45,47 +47,91 @@ public class Controller {
     private WorkController workController;
     private final Timeline timeline = new Timeline();
 
+    private UIText uiText;
+
     @FXML
     void initialize() {
+        // Инициализация локализации
+        Localization localization = initializeLocalization();
+        uiText = new UIText(localization);
+
+        // Настройка текста элементов интерфейса
+        setUIText();
+
+        // Инициализация WorkController
+        workController = initializeWorkController();
+
+        // Настройка таймера
+        setupTimer();
+
+        // Обработчик события нажатия на кнопку "Работа/Отдых"
+        work.setOnAction(actionEvent -> handleWorkButtonAction());
+    }
+
+    private Localization initializeLocalization() {
+        if (config.getValue("language") != null) {
+            return new Localization((String) config.getValue("language"));
+        } else {
+            return new Localization();
+        }
+    }
+
+    private void setUIText() {
+        youWorkOrRest.setText(uiText.getText("youWork"));
+        work.setText(uiText.getText("rest"));
+        toNewSession.setText(uiText.getText("toRest"));
+        settings.setText(uiText.getText("settings"));
+        statistics.setText(uiText.getText("statistics"));
+    }
+
+    private WorkController initializeWorkController() {
         try {
-            workController = new WorkController(
+            return new WorkController(
                     Integer.parseInt(config.getValue("maxWorkTime").toString()),
                     Integer.parseInt(config.getValue("maxRestTime").toString())
             );
-        } catch (Exception ex) {System.out.println(ex.getMessage());}
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null; // Возвращаем null, если возникла ошибка
+        }
+    }
 
-        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), event -> {
-
-            if (workController.isWork) {
-                mainStatistics.setText(workController.workTimeFromCalculateAsString());
-            } else {
-                try {
-                    mainStatistics.setText(workController.restTimeFromCalculateAsString());
-                } catch (NullPointerException ignored) { }
-            }
-
-            try {
-                toNewSessionTime.setText(workController.timeToEndSessionAsString());
-            } catch (NullPointerException ignored) { }
+    private void setupTimer() {
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(200d), event -> {
+            updateTimer();
         }));
         timeline.setCycleCount(Timeline.INDEFINITE); // Бесконечное повторение
-
         timeline.play();
+    }
 
-        work.setOnAction(actionEvent -> {
-            workController.setWork();
+    private void updateTimer() {
+        if (workController.isWork) {
+            mainStatistics.setText(workController.workTimeFromCalculateAsString());
+        } else {
+            try {
+                mainStatistics.setText(workController.restTimeFromCalculateAsString());
+            } catch (NullPointerException ignored) { }
+        }
 
-            if (workController.isWork) {
-                youWorkOrRest.setText("Вы сегодня работали:");
-                work.setText("Перерыв");
+        try {
+            toNewSessionTime.setText(workController.timeToEndSessionAsString());
+        } catch (NullPointerException ignored) { }
+    }
 
-                toNewSession.setText("До перерыва:");
-            } else {
-                youWorkOrRest.setText("Вы сегодня отдыхали:");
-                work.setText("Работать");
+    private void handleWorkButtonAction() {
+        workController.setWork();
 
-                toNewSession.setText("До работы:");
-            }
-        });
+        if (workController.isWork) {
+            youWorkOrRest.setText(uiText.getText("youWork"));
+            work.setText(uiText.getText("rest"));
+            toNewSession.setText(uiText.getText("toRest"));
+        } else {
+            youWorkOrRest.setText(uiText.getText("youRest"));
+            work.setText(uiText.getText("work"));
+            toNewSession.setText(uiText.getText("toWork"));
+        }
+
+        settings.setText(uiText.getText("settings"));
+        statistics.setText(uiText.getText("statistics"));
     }
 }

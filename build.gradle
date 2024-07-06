@@ -9,7 +9,7 @@ plugins {
 }
 
 group 'org.yoosha'
-version '0.5.1-ALPHA'
+version '0.6-ALPHA'
 
 repositories {
     mavenCentral()
@@ -50,6 +50,8 @@ dependencies {
     implementation('org.springframework.boot:spring-boot-starter')
     implementation("org.xerial:sqlite-jdbc:3.46.0.0")
     implementation("jakarta.enterprise:jakarta.enterprise.cdi-api:4.1.0")
+    implementation("javax.json:javax.json-api:1.1.2")
+    implementation("org.glassfish:javax.json:1.1.2")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
