@@ -9,7 +9,7 @@ plugins {
 }
 
 group 'org.yoosha'
-version '0.5-ALPHA'
+version '0.5.1-ALPHA'
 
 repositories {
     mavenCentral()
