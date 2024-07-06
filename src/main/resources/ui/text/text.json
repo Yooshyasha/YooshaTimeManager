@@ -1,0 +1,22 @@
+{
+  "en": {
+    "youWork": "You worked today:",
+    "youRest": "You rested today:",
+    "work": "Work",
+    "rest": "Break",
+    "toRest": "Before rest:",
+    "toWork": "Before work:",
+    "statistics": "Statistics",
+    "settings": "Settings"
+  },
+  "ru": {
+    "youWork": "Вы сегодня работали:",
+    "youRest": "Вы сегодня отдыхали:",
+    "work": "Работать",
+    "rest": "Перерыв",
+    "toRest": "До перерыва:",
+    "toWork": "До работы:",
+    "statistics": "Статистика",
+    "settings": "Настройки"
+  }
+}
